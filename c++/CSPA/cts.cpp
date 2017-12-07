@@ -1,6 +1,7 @@
 #include "cts.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <time.h>
 
 namespace CT
@@ -101,5 +102,28 @@ namespace CT
 		}
 
 		return fileName;
+	}
+
+	
+	std::string GetFileContent(const std::string& filePathName)
+	{
+		FILE* fd = fopen(filePathName.c_str(), "rb");
+		if(!fd) return std::string("");
+
+		fseek(fd, 0, SEEK_END);
+		long size = ftell(fd);
+		fseek(fd, 0, SEEK_SET);
+		
+		char* buf = new char[size + 1];
+		if(!buf) return std::string("");
+		memset(buf, 0, size + 1);
+		
+		fread(buf, 1, size, fd);
+
+		string content(buf, size);
+		fclose(fd);
+		delete[] buf;
+		
+		return content;
 	}
 }

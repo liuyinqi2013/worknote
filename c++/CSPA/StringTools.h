@@ -49,6 +49,12 @@ namespace CT
 	std::string EncodeBase64(const std::string& strIn);
 	
 	std::string DecodeBase64(const std::string& strIn);
+
+	bool IsNumber(const std::string& strIn);
+
+	bool IsDigit(const std::string& strIn) { return IsNumber(strIn)}
+
+	std::string Join(std::vector<std::string>& vecIn, const std::string& strFlag = " ");
 }
 
 #endif

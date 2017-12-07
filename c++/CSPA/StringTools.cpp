@@ -158,7 +158,7 @@ namespace CT
 		int begin = 0;
 		int end = 0;
 
-		strInput += flag;
+		if(!EndsWith(strInput, flag)) strInput += flag;
 
 		while(begin < strInput.size() && (end = strInput.find(flag, begin)) != string::npos)
 		{
@@ -179,7 +179,7 @@ namespace CT
 		int begin = 0;
 		int end = 0;
 
-		strInput += flagSet[0];
+		if(flagSet.find(strInput[strInput.size() -1]) == string::npos) strInput += flagSet[0];
 
 		while(begin < strInput.size() && (end = strInput.find_first_of(flagSet, begin)) != string::npos)
 		{
@@ -329,6 +329,31 @@ namespace CT
 		}
 
 		return strDst;
+	}
+
+	bool IsNumber(const std::string& strIn)
+	{
+		for(int i = 0; i < strIn.size(); ++i)
+		{
+			if(strIn[i] < '0' && strIn[i] > '9') return false;
+		}
+		
+		return true;
+	}
+
+	std::string Join(std::vector<std::string>& vecIn, const std::string& strFlag)
+	{
+		std::string strOut;
+		if(vecIn.size() > 0)
+		{
+			int i;
+			for(i = 0; i < vecIn.size() - 1; ++i) {
+				strOut += vecIn[i] + strFlag;
+			}
+			strOut += vecIn[i];
+		}
+
+		return strOut;
 	}
 
 }

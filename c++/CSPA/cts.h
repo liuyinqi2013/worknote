@@ -22,6 +22,8 @@ namespace CT
 
 	std::string GetFileName(const std::string& filePathName);
 
+	std::string GetFileContent(const std::string& filePathName);
+
 }
 
 #define C2S(x) (std::string((x)))
