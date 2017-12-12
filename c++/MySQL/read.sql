@@ -1,0 +1,1 @@
+select * from wow.tab_user;
