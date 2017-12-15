@@ -52,7 +52,7 @@ namespace CT
 
 	bool IsNumber(const std::string& strIn);
 
-	bool IsDigit(const std::string& strIn) { return IsNumber(strIn)}
+	bool IsDigit(const std::string& strIn) { return IsNumber(strIn);}
 
 	std::string Join(std::vector<std::string>& vecIn, const std::string& strFlag = " ");
 }
