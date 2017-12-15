@@ -1,0 +1,16 @@
+c++函数声明有返回值string，实际定义却没返回值会出现什么情况!
+一、在程序中调用该函数回导致程序崩溃，如果你不返回编译器回返回null，而在调用处会创建一个临时变量把null当成string对象
+对象调用析构函数会对null地区free导致程序崩溃。
+二、在程序中不调用该函数应该是没有问题的。
+三、若函数需要返回基本类型而没用返回，不管调不调用都不会崩溃。
+
+指针装换要注意 如 int* 转换为 size_t* 有的机器上size_t类型为8个字节，而int类型只有4个字节。
+所以到int* 装换为 size_t*取出的数据就不一定准确了。
+
+如编码转换库中的
+
+#include <iconv.h>
+
+size_t iconv (iconv_t cd, const char* * inbuf, size_t * inbytesleft, char* * outbuf, size_t * outbytesleft);
+
+函数不能直接传int类型的地址。
